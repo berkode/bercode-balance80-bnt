@@ -1185,6 +1185,7 @@ async function UpdateOpenTrades() {
 }
 
 async function run() {
+    await UpdateMarginPairs()
     await ExchangeInfo()
     await UpdateOpenTrades()
     //await BalancesInfo()
