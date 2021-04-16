@@ -175,6 +175,14 @@ const margin_pairs = [
    "CAKEBTC",
    "JSTUSDT", 
    "JSTBTC",
+   "TFUELUSDT", 
+   "TFUELBTC",
+   "FIOUSDT", 
+   "FIOBTC",
+   "PERLUSDT", 
+   "PERLBTC",
+   "ALPHAUSDT", 
+   "ALPHABTC",
    "ZENUSDT",
    "ZENBTC"
 ]
