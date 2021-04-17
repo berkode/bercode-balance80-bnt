@@ -10,3 +10,5 @@ npm-debug.log
 *.lock
 *.log
 *.txt
+src/env-PRIVATE.js
+src/.ipynb_checkpoints/env-checkpoint.js
