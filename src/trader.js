@@ -183,6 +183,8 @@ const margin_pairs = [
    "PERLBTC",
    "ALPHAUSDT", 
    "ALPHABTC",
+   "HOTUSDT", 
+   "HOTBTC",
    "ZENUSDT",
    "ZENBTC"
 ]
