@@ -10,7 +10,7 @@ ENV HOST 0.0.0.0
 
 COPY ./package.json ./package-lock.json ./
 
-RUN npm install --only=production
+RUN npm install --only=production --force
 
 # Copy the local code to the container
 COPY . .
