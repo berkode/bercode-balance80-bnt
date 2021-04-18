@@ -34,21 +34,8 @@ const tradingData = {
 //////////////////////////////////////////////////////////////////////////////////
 
 const app = express()
-const port = process.env.TRADER_PORT || 3000
-const dateUp = Date.now();
-
-app.get('/', (req, res) => {
-  const today = new Date();
-
-  res.json({
-    date: today,
-    up: `${(Date.now() - dateUp)/1000} seg.`,
-  });
-});
-
-//app.get("/", (req, res) => res.send(""))
-
-app.listen(port, () => console.log("NBT auto trader running on port: ${port}`)".blue))
+app.get("/", (req, res) => res.send(""))
+app.listen(env.TRADER_PORT, () => console.log("NBT auto trader running.".grey))
 
 const notifier = require('./notifiers')(tradingData.trading_pairs)
 
