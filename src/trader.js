@@ -186,6 +186,8 @@ const margin_pairs = [
    "ALPHABTC",
    "HOTUSDT", 
    "HOTBTC",
+   "MANAUSDT", 
+   "MANABTC",
    "ZENUSDT",
    "ZENBTC"
 ]
