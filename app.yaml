@@ -1,0 +1,25 @@
+service: default
+runtime: nodejs12
+
+env_variables:
+    BACKTEST_TEST_PAIR: "BTCUSDT"
+    BINANCE_API_KEY: ""
+    BINANCE_SECRET_KEY: ""
+    BVA_API_KEY: ""
+    CONNECT_SERVER_TO_BVA: "true"
+    DATABASE_CONNECT_VIA_SSL: "false"
+    DATABASE_INSERT_PAIR_HISTORY: "true"
+    DATABASE_URL: "DATABASE_URL=postgres://postgres:postgres@127.0.0.1:5432/postgres"
+    GMAIL_ADDRESS: ""
+    GMAIL_APP_PASSWORD: ""
+    HOST: "0.0.0.0"
+    SERVER_PORT: "4000"
+    STRATEGY_TIMEFRAME: "15m"
+    TELEGRAM_API_KEY: ""
+    TELEGRAM_RECEIVER_ID: ""
+    TRADE_SHORT_ENABLED: "false"
+    TRADER_PORT: "8003"
+    USE_GMAIL: "false"
+    USE_TELEGRAM: "true"
+    VERSION: "pjson.version"
+    WEBPORT: "8080"

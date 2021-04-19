@@ -5,17 +5,18 @@ npm-debug.log
 # Local development
 *.env
 *.dev
+*checkpoints* 
 
 .DS_Store
 *.lock
 *.log
 *.txt
 src/env-PRIVATE.js
-src/.ipynb_checkpoints/env-checkpoint.js
-src/env.js
-src/.ipynb_checkpoints/env-PRIVATE-checkpoint.js
-src/env.js
-src/env.js
+src/.ipynb_checkpoints/*
 src/env.js
 src/app.yaml
 src/nohup.out
+app-PRIVATE.yaml
+*PRIVATE*
+package.json.backup
+*backup*
