@@ -5,7 +5,7 @@
         "node": ">=0.12"
     },
     "description": "An efficient cryptocurrency trading bot development framework for Binance using Node.js",
-    "main": "./src/trader.js",
+    "main": "./src/index.js",
     "keywords": [
         "binance",
         "cryptocurrency",
@@ -18,7 +18,8 @@
     "author": "Herve Fulchiron <herve76@gmail.com>",
     "license": "ISC",
     "scripts": {
-        "start": "node ./src/server.js",
+        "start": "NODE_ENV=production node index.js",
+        "server": "NODE_ENV=production ./src/server.js",
         "trader": "NODE_ENV=production node ./src/trader.js",
         "backtest": "node ./src/backtest.js"
     },

@@ -12,6 +12,7 @@ const TradeQueue = require("./trade-queue")
 const bva_key = env.BVA_API_KEY
 const tradeQueue = new TradeQueue()
 const tradeShortEnabled = env.TRADE_SHORT_ENABLED
+
 tradeQueue.startQueue()
 
 //////////////////////////////////////////////////////////////////////////////////
@@ -34,21 +35,8 @@ const tradingData = {
 //////////////////////////////////////////////////////////////////////////////////
 
 const app = express()
-const port = process.env.TRADER_PORT || 3000
-const dateUp = Date.now();
-
-app.get('/', (req, res) => {
-  const today = new Date();
-
-  res.json({
-    date: today,
-    up: `${(Date.now() - dateUp)/1000} seg.`,
-  });
-});
-
-//app.get("/", (req, res) => res.send(""))
-
-app.listen(port, () => console.log("NBT auto trader running on port: ${port}`)".blue))
+app.get("/", (req, res) => res.send(""))
+app.listen(env.TRADER_PORT, () => console.log("NBT auto trader running.".grey))
 
 const notifier = require('./notifiers')(tradingData.trading_pairs)
 

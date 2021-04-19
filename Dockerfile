@@ -4,7 +4,7 @@ FROM node:14.15.5-buster@sha256:28b64286eb60f8b14112c9d3900a826743796b0efe04344c
 
 WORKDIR /srv/app/
 
-ENV PORT 8080
+ENV WEBPORT 8080
 
 ENV HOST 0.0.0.0
 
@@ -18,5 +18,8 @@ COPY . .
 # Build production app
 # RUN npm run Build
 
-# Start the service
-CMD npm start run trader
+# Start the website
+CMD npm start
+
+# Start the trader
+CMD npm run trader
