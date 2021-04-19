@@ -22,4 +22,5 @@ env_variables:
     USE_GMAIL: "false"
     USE_TELEGRAM: "true"
     VERSION: "pjson.version"
-    WEBPORT: "8080"
+    WEBPORT: "8000"
+    PORT: "8080"
