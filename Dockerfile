@@ -22,4 +22,4 @@ COPY . .
 #CMD npm start
 
 # Start the trader
-CMD npm run start
+CMD npm run start & npm run trader
