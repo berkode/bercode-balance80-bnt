@@ -14,6 +14,6 @@ app.get('/', (req, res) => {
 });
 
 app.listen(webport, () => {
-  console.log(`Web service running on port: ${port}`);
+  console.log(`Web service running on port: ${webport}`);
   console.log('Press CTRL + C to quit');
 });
