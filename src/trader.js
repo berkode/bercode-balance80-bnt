@@ -222,6 +222,8 @@ const margin_pairs = [
    "MITHBTC",
    "TROYUSDT",
    "TROYBTC",
+   "STPTUSDT",
+   "STPTBTC",
    "ZENUSDT",
    "ZENBTC"
 ]
