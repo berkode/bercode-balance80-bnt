@@ -28,7 +28,7 @@ module.exports = envalid.cleanEnv(process.env, {
     TELEGRAM_RECEIVER_ID: envalid.str({ default: "" }),
     TRADE_SHORT_ENABLED: envalid.bool({ default: false }),
     TRADER_PORT: envalid.port({
-        default: 8003,
+        default: 8080,
         desc: "The port to trader webserver runs",
     }),
     USE_GMAIL: envalid.bool({ default: false }),

@@ -18,7 +18,7 @@ env_variables:
     TELEGRAM_API_KEY: ""
     TELEGRAM_RECEIVER_ID: ""
     TRADE_SHORT_ENABLED: "false"
-    TRADER_PORT: "8003"
+    TRADER_PORT: "8080"
     USE_GMAIL: "false"
     USE_TELEGRAM: "true"
     VERSION: "pjson.version"
