@@ -12,5 +12,4 @@
   env: 
   -'PORT=8080'
 
-images: 
-- 'gcr.io/bercode-nbt/nbt'
+images: ['gcr.io/bercode-nbt/nbt']
