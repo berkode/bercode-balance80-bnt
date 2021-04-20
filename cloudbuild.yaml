@@ -1,13 +1,16 @@
 # build the container image
-name: 'gcr.io/cloud-builders/docker'
-args: ['build', '-t', 'gcr.io/bercode-nbt/bercode-nbt:${SHORT_SHA}', '.']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/bercode-nbt/nbt:${SHORT_SHA}', '.']
 
 # push the container image to Container Registry
-name: 'gcr.io/cloud-builders/docker'
-args: ['push', 'gcr.io/bercode-nbt/bercode-nbt']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/bercode-nbt/nbt']
 
 # deploy container image to Cloud Run
-name: 'gcr.io/cloud-builders/gcloud'
-args: ['beta', 'run', 'deploy', 'bercode-nbt', '--image', 'gcr.io/bercode-nbt/bercode-nbt:${SHORT_SHA}', '--region', 'europe-west6', '--allow-unauthenticated']
-env: 'PORT=8080'
-images: gcr.io/bercode-nbt/bercode-nbt
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['beta', 'run', 'deploy', 'bercode-nbt', '--image', 'gcr.io/bercode-nbt/nbt:${SHORT_SHA}', '--region', 'europe-west6', '--allow-unauthenticated']
+  env: 
+  -'PORT=8080'
+
+images: 
+- gcr.io/bercode-nbt/nbt
