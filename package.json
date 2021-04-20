@@ -20,8 +20,8 @@
     "license": "ISC",
     "scripts": {
         "start": "node ./src/index.js",
-        //"server": "node ./src/server.js",
-        //"backtest": "node ./src/backtest.js",
+        "server": "node ./src/server.js",
+        "backtest": "node ./src/backtest.js",
         "trader": "node ./src/trader.js"
     },
     "dependencies": {
