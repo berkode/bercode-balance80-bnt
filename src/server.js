@@ -10,7 +10,7 @@ const axios = require("axios")
 const { Client } = require("pg")
 const env = require("./env")
 
-const PORT = env.SERVER_PORT
+//const PORT = env.SERVER_PORT
 const INDEX = path.join(__dirname, "index.html")
 
 //////////////////////////////////////////////////////////////////////////////////
@@ -98,7 +98,7 @@ if (insert_into_db && pg_connectionString) {
 
 const server = express()
     .use((req, res) => res.sendFile(INDEX))
-    .listen(PORT, () => console.log(`NBT server running on port ${PORT}`))
+    .listen(env.SERVER_PORT, () => console.log(`NBT server running on port ${env.SERVER_PORT}`))
 
 //////////////////////////////////////////////////////////////////////////////////
 

@@ -35,8 +35,24 @@ const tradingData = {
 //////////////////////////////////////////////////////////////////////////////////
 
 const app = express()
-app.get("/", (req, res) => res.send(""))
-app.listen(env.TRADER_PORT, () => console.log("NBT auto trader running.".grey))
+const dateUp = Date.now();
+
+//app.get("/", (req, res) => res.send(""))
+
+app.get('/', (req, res) => {
+  const today = new Date();
+
+  res.json({
+    date: today,
+    up: `${(Date.now() - dateUp)/1000} seg.`,
+  });
+});
+
+//app.listen(env.TRADER_PORT, () => console.log("NBT auto trader running.".grey))
+
+app.listen(env.TRADER_PORT, () => {
+  console.log("NBT auto trader running on port ", env.TRADER_PORT);
+});
 
 const notifier = require('./notifiers')(tradingData.trading_pairs)
 
@@ -186,6 +202,26 @@ const margin_pairs = [
    "ALPHABTC",
    "HOTUSDT", 
    "HOTBTC",
+   "NANOUSDT",
+   "NANOBTC",
+   "WTCUSDT",
+   "WTCBTC",
+   "DATAUSDT",
+   "DATABTC",
+   "STORJUSDT",
+   "STORJBTC",
+   "NBSUSDT",
+   "NBSBTC",
+   "BTTUSDT",
+   "BTTBTC",
+   "TOMOUSDT",
+   "TOMOBTC",
+   "TKOUSDT",
+   "TKOBTC",
+   "MITHUSDT",
+   "MITHBTC",
+   "TROYUSDT",
+   "TROYBTC",
    "ZENUSDT",
    "ZENBTC"
 ]
@@ -1188,7 +1224,7 @@ async function UpdateOpenTrades() {
 }
 
 async function run() {
-    //await UpdateMarginPairs()
+    await UpdateMarginPairs()
     await ExchangeInfo()
     await UpdateOpenTrades()
     await BalancesInfo()
