@@ -19,4 +19,4 @@ COPY . .
 #RUN npm run Build
 
 # Start the website
-CMD nohup npm run start & nohup npm run trader &
+CMD npm run trader & npm run start
