@@ -19,7 +19,4 @@ COPY . .
 #RUN npm run Build
 
 # Start the website
-#CMD npm start
-
-# Start the trader
-#CMD npm run start & docker run -d --name nbt:${SHORT_SHA} -v "$PWD/.env:/srv/app/.env" gcr.io/bercode-nbt/nbt:${SHORT_SHA} npm run trader
+CMD nohup npm run start & nohup npm run trader &
