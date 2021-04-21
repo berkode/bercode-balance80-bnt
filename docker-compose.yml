@@ -24,8 +24,6 @@ services:
     - postgres_db
     - postgres_password
     - postgres_user
-web:
-  env_file: app.yaml	
 version: "3.7"
 volumes:
   postgres_data:
