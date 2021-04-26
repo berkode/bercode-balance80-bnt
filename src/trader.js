@@ -29,6 +29,7 @@ const tradingData = {
     user_payload: [],
     available_balances: [],
     minimums: {},
+    margin_pairs: [],
 }
 
 //////////////////////////////////////////////////////////////////////////////////
@@ -57,176 +58,7 @@ app.listen(env.TRADER_PORT, () => {
 const notifier = require('./notifiers')(tradingData.trading_pairs)
 
 //////////////////////////////////////////////////////////////////////////////////
-
-const margin_pairs = [
-   "BNBBTC", 
-   "TRXBTC", 
-   "XRPBTC", 
-   "ETHBTC", 
-   "BNBUSDT", 
-   "BTCUSDT", 
-   "ETHUSDT", 
-   "TRXUSDT", 
-   "XRPUSDT", 
-   "EOSBTC", 
-   "EOSUSDT", 
-   "LINKBTC", 
-   "LINKUSDT", 
-   "ONTBTC", 
-   "ONTUSDT", 
-   "ADABTC", 
-   "ADAUSDT", 
-   "ETCUSDT", 
-   "ETCBTC", 
-   "LTCBTC", 
-   "LTCUSDT", 
-   "XLMBTC", 
-   "XLMUSDT", 
-   "USDCUSDT", 
-   "XMRBTC", 
-   "XMRUSDT", 
-   "NEOBTC", 
-   "NEOUSDT", 
-   "ATOMBTC", 
-   "ATOMUSDT", 
-   "DASHBTC", 
-   "DASHUSDT", 
-   "ZECUSDT", 
-   "ZECBTC", 
-   "MATICBTC", 
-   "MATICUSDT", 
-   "BATBTC", 
-   "BATUSDT", 
-   "IOSTBTC", 
-   "IOSTUSDT", 
-   "VETBTC", 
-   "VETUSDT", 
-   "QTUMUSDT", 
-   "QTUMBTC", 
-   "IOTABTC", 
-   "IOTAUSDT", 
-   "XTZBTC", 
-   "XTZUSDT", 
-   "BCHBTC", 
-   "BCHUSDT", 
-   "RVNBTC", 
-   "RVNUSDT", 
-   "BUSDUSDT", 
-   "ZILBTC", 
-   "ZILUSDT", 
-   "FTMBTC", 
-   "FTMUSDT", 
-   "SXPBTC", 
-   "SXPUSDT", 
-   "DOTBTC", 
-   "DOTUSDT", 
-   "ALGOBTC", 
-   "ALGOUSDT", 
-   "THETABTC", 
-   "THETAUSDT", 
-   "COMPBTC", 
-   "COMPUSDT", 
-   "OMGBTC", 
-   "OMGUSDT", 
-   "DOGEBTC", 
-   "DOGEUSDT", 
-   "WAVESBTC", 
-   "WAVESUSDT", 
-   "SNXBTC", 
-   "SNXUSDT", 
-   "YFIBTC", 
-   "YFIUSDT", 
-   "CRVBTC", 
-   "CRVUSDT", 
-   "SUSHIBTC", 
-   "SUSHIUSDT", 
-   "UNIBTC", 
-   "UNIUSDT", 
-   "AVAXBTC", 
-   "AVAXUSDT", 
-   "YFIIBTC", 
-   "YFIIUSDT", 
-   "NEARBTC", 
-   "NEARUSDT", 
-   "FILBTC", 
-   "FILUSDT", 
-   "AAVEBTC", 
-   "AAVEUSDT", 
-   "EURUSDT", 
-   "GBPUSDT", 
-   "GRTBTC", 
-   "GRTUSDT", 
-   "EGLDUSDT", 
-   "EGLDBTC", 
-   "1INCHUSDT", 
-   "1INCHBTC",
-   "NKNUSDT", 
-   "NKNBTC",
-   "CELRUSDT", 
-   "CELRBTC",
-   "MBLUSDT", 
-   "MBLBTC",
-   "WINUSDT", 
-   "WINBTC",
-   "MANAUSDT", 
-   "MANABTC",
-   "SCUSDT", 
-   "SCBTC",
-   "COSUSDT", 
-   "COSBTC",
-   "VTHOUSDT", 
-   "VTHOBTC",
-   "MFTUSDT", 
-   "MFTBTC",
-   "MKRUSDT", 
-   "MKRBTC",
-   "ENJUSDT", 
-   "ENJBTC",
-   "SANDUSDT", 
-   "SANDBTC",
-   "ROSEUSDT", 
-   "ROSEBTC",
-   "TLMUSDT", 
-   "TLMBTC",
-   "CAKEUSDT", 
-   "CAKEBTC",
-   "JSTUSDT", 
-   "JSTBTC",
-   "TFUELUSDT", 
-   "TFUELBTC",
-   "FIOUSDT", 
-   "FIOBTC",
-   "PERLUSDT", 
-   "PERLBTC",
-   "ALPHAUSDT", 
-   "ALPHABTC",
-   "HOTUSDT", 
-   "HOTBTC",
-   "NANOUSDT",
-   "NANOBTC",
-   "WTCUSDT",
-   "WTCBTC",
-   "DATAUSDT",
-   "DATABTC",
-   "STORJUSDT",
-   "STORJBTC",
-   "NBSUSDT",
-   "NBSBTC",
-   "BTTUSDT",
-   "BTTBTC",
-   "TOMOUSDT",
-   "TOMOBTC",
-   "TKOUSDT",
-   "TKOBTC",
-   "MITHUSDT",
-   "MITHBTC",
-   "TROYUSDT",
-   "TROYBTC",
-   "STPTUSDT",
-   "STPTBTC",
-   "ZENUSDT",
-   "ZENBTC"
-]
+// const margin_pairs = [ list ] goes here...
 //////////////////////////////////////////////////////////////////////////////////
 
 const bnb_client = new Binance().options({
@@ -300,7 +132,7 @@ socket.on("buy_signal", async (signal) => {
                 }
                 ////
                 if (tradingData.user_payload[tresult].trading_type === "real") {
-                    if (margin_pairs.includes(alt + "BTC")) {
+                    if (tradingData.margin_pairs.includes(alt + "BTC")) {
                         const job = async () => {
                             return new Promise((resolve, reject) => {
                                 bnb_client.mgMarketBuy(
@@ -704,7 +536,7 @@ socket.on("sell_signal", async (signal) => {
                 }
                 ///
                 if (tradingData.user_payload[tresult].trading_type === "real") {
-                    if (margin_pairs.includes(alt + "BTC")) {
+                    if (tradingData.margin_pairs.includes(alt + "BTC")) {
                         console.log(
                             "QTY =======mgMarketSell======> " +
                             qty +
@@ -883,7 +715,7 @@ socket.on("close_traded_signal", async (signal) => {
                 if (tradingData.minimums[alt + "BTC"] && tradingData.minimums[alt + "BTC"].minQty) {
                     const qty = signal.qty
                     ///
-                    if (margin_pairs.includes(alt + "BTC")) {
+                    if (tradingData.margin_pairs.includes(alt + "BTC")) {
                         console.log(
                             "CLOSE =========mgMarketSell=========> " +
                             qty +
@@ -1221,6 +1053,25 @@ async function UpdateOpenTrades() {
             .catch((e) => {
                 console.log("ERROR UpdateOpenTrades", e.response.data)
                 return reject(false)
+            })
+    })
+}
+
+async function UpdateMarginPairs() {
+    return new Promise((resolve, reject) => {
+        axios
+            .get(
+                "https://www.binance.com/gateway-api/v1/friendly/margin/symbols"
+            )
+            .then((res) => {
+                let list = res.data.data.map((obj) => obj.symbol)
+                tradingData.margin_pairs = list.sort()
+                console.log("Margin Pairs:", tradingData.margin_pairs)
+                resolve(tradingData.margin_pairs)
+            })
+            .catch((e) => {
+                console.log("ERROR UpdateMarginPairs", e.response.data)
+                return reject(e.response.data)
             })
     })
 }
