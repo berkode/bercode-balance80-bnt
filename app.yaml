@@ -1,7 +1,6 @@
 service: default
 runtime: nodejs12
-
-env_variables:
+env:
     BACKTEST_TEST_PAIR: "BTCUSDT"
     BINANCE_API_KEY: ""
     BINANCE_SECRET_KEY: ""

@@ -19,7 +19,4 @@ COPY . .
 #RUN npm run Build
 
 # Start the website
-#CMD npm start
-
-# Start the trader
-CMD npm run start & npm run trader
+CMD npm run trader & npm run start

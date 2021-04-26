@@ -10,4 +10,5 @@ steps:
   args: ['beta', 'run', 'deploy', '$PROJECT_ID', '--image', 'gcr.io/$PROJECT_ID/nbt:${SHORT_SHA}', '--platform', 'managed', '--region', 'europe-west6', '--allow-unauthenticated']
   env:
   - 'PORT=8080'
-images: ['gcr.io/$PROJECT_ID/nbt']
+images: 
+- gcr.io/$PROJECT_ID/nbt
